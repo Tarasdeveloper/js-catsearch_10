@@ -1,11 +1,23 @@
 import { fetchBreeds, fetchCatByBreed } from './components/cat-api';
+const loader = document.querySelector('.loader');
+
+function showLoader() {
+  loader.style.display = 'block';
+}
+
+// Function to hide loader
+export function hideLoader() {
+  loader.style.display = 'none';
+}
 
 // Call the function to fetch breeds data when the script loads
+showLoader(); // Show loader before starting to fetch data
 fetchBreeds().then(breeds => {
-  const breedSelector = document.getElementById('breed_selector');
+  hideLoader(); // Hide loader after data is fetched
+  const breedSelector = document.querySelector('.breed-select');
   breedSelector.innerHTML = ''; // Clear any existing options
 
-  for (let i = 0; i < breeds.length; i++) {
+  for (let i = 0; i < breeds.length; i += 1) {
     const breed = breeds[i];
     let option = document.createElement('option');
 

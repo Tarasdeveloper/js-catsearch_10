@@ -1,3 +1,8 @@
+body {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -9,6 +14,20 @@ img {
   display: flex;
   gap: 20px;
 }
+
 .description {
   max-width: 50%;
+}
+
+.error {
+  color: red;
+}
+
+.is-hidden {
+  display: none;
+}
+.breed-select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 17px;
 }

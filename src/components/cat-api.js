@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { hideLoader } from '../index';
 
 const url = `https://api.thecatapi.com/v1/breeds`;
 const api_key =
   'live_cEiFDfGVM5O2X78frqqUn4cZb8R1822BKdU05PMzTiAmno6tDMapBlUTfB36Dd8J';
 let storedBreeds = [];
 
+const breedJson = document.querySelector('.cat-info');
+
 export function fetchBreeds() {
-  // Axios request to fetch the breeds data
   return axios
     .get(url, {
       headers: {
@@ -21,14 +23,14 @@ export function fetchBreeds() {
       return storedBreeds;
     })
     .catch(error => {
-      console.log(error);
+      hideLoader();
+      breedJson.innerHTML =
+        '<p class="error">Oops! Something went wrong! Try reloading the page!</p>';
       throw error;
     });
 }
 
 export function fetchCatByBreed(breedId) {
-  const breedJson = document.querySelector('.cat-info');
-
   const cat = storedBreeds[breedId];
 
   breedJson.innerHTML = `<div><img src="${cat.image.url}" alt="${cat.name}"></div>
