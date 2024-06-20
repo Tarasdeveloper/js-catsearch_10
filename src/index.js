@@ -1,4 +1,5 @@
 import { fetchBreeds, fetchCatByBreed } from './components/cat-api';
+
 const loader = document.querySelector('.loader');
 
 function showLoader() {
